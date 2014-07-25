@@ -1,0 +1,98 @@
+First let's make php files
+- header.php
+		We will copy the header from the Html files to the header.php file
+- footer.php
+		We will copy the footer from the Html files to the footer.php file
+- index.php
+		
+- page.php
+		
+- sidebar.php
+		We will copy the sidebar from the Html files to the sidebar.php filefooter
+- functions.php
+
+& the style.Css
+in the top of the style.css file add this following codes !
+/*
+Theme Name: THE NAME
+Theme URI: THE THEME LINK
+Author: THE AUTHOR NAME
+Author URI: THE AUTHOR WEBSITE
+Description: DESCRIPTION
+Version: 1.0
+License: GNU General Public License v2 or later
+Text Domain: twentythirteen
+*/
+//Css href ="" 	"<?php bloginfo('stylesheet_url'); ?>"
+including <?php wp_head(); ?>
+//title 	<?php bloginfo('title'); ?>
+
+//Name of the site 	<?php bloginfo('name'); ?>
+//Slogan	<?php bloginfo('description'); ?>
+
+//for the navigation 	<?php wp_nav_menu(); ?>
+
+========= The index file ===========
+<?php get_header(); ?> //for the header
+
+we have to include a while loop that will show the posts in our index post
+	<?php while(have_posts()) : the_post(); ?> //start the while loop
+
+			here include the html post codes, with some changes
+
+			for the author <?php the_author_posts_link(); ?> inside the a tags
+			the date <?php the_time('F jS, Y'); ?>
+			for the comments 
+					for the link href="<?php comments_link(); ?>"
+					for the number of comments <?php comments_number('0 Comments', '1 Comment', '% responses')
+
+			For the FULL ARTICLE or READ MORE (we include the Href php tags on the link of the thumbnail & title )
+				the link href="<? php the_permalink(); ?>"
+
+
+			for the title we include this <?php the_title(); ?>
+			for the post we include this <?php the_content('Read More'); ?>
+			for the image we replace the <img /> tag with <?php the_post_thumbnail('full'); ?>
+
+	<?php endwhile; ?> //end the while loop
+
+<?php get_footer(); ?> //for the footer
+============ Functions ===========
+
+<?php 
+//For the thumbnail we add
+
+add_theme_support('post-thumbnails'); 
+
+//for the menu thing
+
+add_theme_support('menus');
+//Register right Sidebar
+
+register_siderbar(array(
+'name' => __('Right Hand Sidebar'),
+'id' => 'right-sidebar',
+'description' => __('Widgets in this area will be shown on the right-hand side?'),
+'before_title' => '<h3 class="sidebar_title">', //depends on the header u are using on ur html file  & class too
+'after_title' => '</h3>',
+'before_widget' => '<div id="%1$s" class="widget %2$s">',
+'after_widget' => '</div><!-- widget end -->'
+));
+
+
+
+
+?>
+
+============ Single page =========
+Copy all the codes from INDEX.php to it and add the comments codes
+	<?php comments_template(); ?>
+============= page.php =============
+<? php get_header(); ?>
+<?php while(have_posts()) : the_post(); ?>
+// the post codes including on the The title code <?php the_title(); ?> & the content code <?php the_content('Read More'); ?>
+<?php endwhile; ?>
+<?php get_footer(); ?>
+============== Sidebar.php ==============
+U add ur div of the side bar for example <div id="sidebar"></div>
+inside it we add this following code <?php dynamic_sidebar('right-sidebar'); ?>
