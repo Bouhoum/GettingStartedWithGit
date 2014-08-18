@@ -3628,3 +3628,49 @@ body, .gallery {
 	font-weight: bolder;
 
 }
+
+img.bg
+{
+	opacity: 0;
+		 /* Set rules to fill background */
+  min-height: 100%;
+  min-width: 1024px;
+	
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+	
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  -webkit-animation: hide 3s linear 2s;
+    animation: hide 3s linear 2s;
+}
+.shoow{
+  -webkit-animation: show 3s linear 2s;
+    animation: show 3s linear 2s;
+}
+
+@-webkit-keyframes show {
+    from {opacity: 0; }
+    to {opacity: 1;}
+}
+@-webkit-keyframes hide {
+    from {opacity: 1; }
+    to {opacity: 0;}
+}
+@media screen and (max-width: 1024px) { 
+  img.bg {
+    left: 50%;
+    margin-left: -512px;   /* 50% */
+  }
+}
+aside.imgBW {
+	background-image: url("img/exterior/Table.jpg");
+	background-repeat: no-repeat; display: block;
+}
+aside.imgBW:hover {
+	visibility: hidden;
+}
