@@ -1208,7 +1208,7 @@ a.control:hover {
 #main footer {
 	clear:both;
 	display:block;
-	margin:10px 4px;
+	margin:-150px 4px;
 	text-align:center;
 }
 #main footer .wrap {
@@ -3653,7 +3653,7 @@ img.bg
   -webkit-animation: hide 3s linear 2s;
     animation: hide 3s linear 2s;
 }
-.shoow{
+/*.shoow{
   -webkit-animation: show 3s linear 2s;
     animation: show 3s linear 2s;
 }
@@ -3665,7 +3665,7 @@ img.bg
 @-webkit-keyframes hide {
     from {opacity: 1; }
     to {opacity: 0;}
-}
+}*/
 @media screen and (max-width: 1024px) { 
   img.bg {
     left: 50%;
